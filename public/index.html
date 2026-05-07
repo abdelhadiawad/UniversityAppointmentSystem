@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نظام الحجز الجامعي — تسجيل الدخول</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styleindex/style.css">
+</head>
+<body>
+<div class="page login-page">
+  <div class="left-panel">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div>
+      <div class="logo-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M13 3L3 8v2h20V8L13 3z" fill="white" opacity="0.9"/>
+          <rect x="5" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+          <rect x="11.5" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+          <rect x="18" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+          <rect x="3" y="20" width="20" height="2" rx="1" fill="white" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="site-name">نظام الحجز الجامعي</div>
+      <div class="site-sub">بوابة تسجيل الدخول للطلاب</div>
+    </div>
+    <div class="left-bottom">
+      <div class="divider-left"></div>
+      <div class="left-tag">كلية العلوم · آمن · رسمي</div>
+      <div class="progress-strip">
+        <div class="progress-label">نسبة اكتمال بيانات الدخول</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+        <div class="progress-pct" id="progressPct">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div id="formView">
+      <div class="form-title">تسجيل الدخول</div>
+      <div class="form-subtitle">أدخل بياناتك للدخول إلى نظام حجز المواعيد</div>
+
+      <div class="faculty-fixed-card">
+        <div class="fac-icon">🔬</div>
+        <div>
+          <div class="faculty-fixed-label">الكلية</div>
+          <div class="faculty-fixed-name">كلية العلوم</div>
+        </div>
+      </div>
+
+      <div class="fields-grid login-fields">
+        <div class="field field-full" id="f-sid">
+          <label for="sid">رقم الطالب</label>
+          <div class="input-wrap"><input id="sid" type="text" placeholder="مثال: 20231045" inputmode="numeric"/></div>
+          <div class="error-msg" id="err-sid">رقم الطالب من 6 إلى 10 أرقام</div>
+        </div>
+
+        <div class="field field-full" id="f-nid">
+          <label for="nid">الرقم القومي</label>
+          <div class="input-wrap"><input id="nid" type="text" placeholder="14 رقماً" maxlength="14" inputmode="numeric"/></div>
+          <div class="error-msg" id="err-nid">يجب أن يكون 14 رقماً بالضبط</div>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" disabled onclick="handleSubmit()">
+        <span class="btn-text">دخول إلى نظام الحجز</span>
+        <div class="btn-spinner"></div>
+      </button>
+    </div>
+
+    <div class="success-screen" id="successView">
+      <div class="success-circle">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 16l5 5 11-10" stroke="#3b6d11" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="success-title">تم تسجيل الدخول!</div>
+      <div class="success-sub">يمكنك الآن الدخول واختيار القسم المناسب لحجز موعدك.</div>
+      <div class="success-detail" id="successDetail"></div>
+      <button class="signin-btn" onclick="goToBooking()">دخول وحجز موعد ←</button>
+      <button class="back-btn" onclick="resetForm()">تسجيل دخول آخر</button>
+    </div>
+  </div>
+</div>
+<script src="scriptindex/script.js"></script>
+</body>
+</html>

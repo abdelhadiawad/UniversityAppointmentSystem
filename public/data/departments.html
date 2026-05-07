@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نظام الحجز الجامعي — الأقسام</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="styledeparments/style.css">
+ 
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg width="20" height="20" viewBox="0 0 26 26" fill="none">
+        <path d="M13 3L3 8v2h20V8L13 3z" fill="white" opacity="0.9"/>
+        <rect x="5" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+        <rect x="11.5" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+        <rect x="18" y="12" width="3" height="8" rx="1" fill="white" opacity="0.7"/>
+        <rect x="3" y="20" width="20" height="2" rx="1" fill="white" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="nav-title">نظام الحجز الجامعي</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-user-wrap">
+      <div class="nav-avatar" id="navAvatar">ط</div>
+      <div class="nav-name" id="navName">الطالب</div>
+    </div>
+    <button class="nav-logout" onclick="logout()">خروج</button>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <!-- Faculty info card - shows ONLY user's faculty -->
+    <div class="faculty-info-card">
+      <div class="faculty-info-icon" id="sidebarFacultyIcon">🔬</div>
+      <div class="faculty-info-name" id="sidebarFacultyName">كلية العلوم</div>
+      <div class="faculty-info-sub" id="sidebarStudentInfo">طالب</div>
+      <span class="faculty-info-badge" id="sidebarFacultyBadge">علوم</span>
+    </div>
+
+    <div class="sidebar-label">القائمة</div>
+    <button class="nav-item active" id="navDepts" onclick="showView('dept')">
+      <div class="nav-item-icon" style="background:#eef2ff">🏠</div>
+      <span class="nav-item-name">قسمي</span>
+    </button>
+    <button class="nav-item" id="navBookings" onclick="showView('bookings')">
+      <div class="nav-item-icon" style="background:#eaf3de">📋</div>
+      <span class="nav-item-name">حجوزاتي</span>
+    </button>
+    <button class="nav-item" id="navStudent" onclick="showView('student')">
+      <div class="nav-item-icon" style="background:#fff3e0">👤</div>
+      <span class="nav-item-name">بيانات الطالب</span>
+    </button>
+  </aside>
+
+  <main class="main">
+    <!-- DEPT VIEW -->
+    <div id="deptView">
+      <div class="breadcrumb">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 13V7l6-5 6 5v6H2z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        <span id="breadFaculty">كلية العلوم</span>
+      </div>
+      <div class="page-title" id="pageTitle">القسم المسجل للطالب</div>
+      <div class="page-sub">القسم يظهر تلقائيًا حسب بيانات الطالب المسجلة في قاعدة البيانات، ولا يتم اختياره يدويًا من الطالب.</div>
+
+      <div id="assignedDeptBox"></div>
+    </div>
+
+    <!-- BOOKINGS VIEW -->
+    <div id="bookingsView" style="display:none">
+      <div class="page-title">حجوزاتي</div>
+      <div class="page-sub">جميع مواعيدك المحجوزة — يمكنك إلغاء أي موعد</div>
+      <div class="stats-bar" id="statsBar"></div>
+      <div id="bookingsList" style="margin-top:4px;"></div>
+    </div>
+
+    <!-- STUDENT DATA VIEW -->
+    <div id="studentView" style="display:none">
+      <div class="page-title">بيانات الطالب</div>
+      <div class="page-sub">بيانات الطالب المسجلة في النظام — جاهزة للربط مع قاعدة البيانات</div>
+      <div id="studentProfileBox"></div>
+    </div>
+  </main>
+</div>
+
+<!-- CANCEL CONFIRM MODAL -->
+<div class="overlay" id="cancelOverlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗓️</div>
+    <div class="confirm-title">إلغاء الموعد</div>
+    <div class="confirm-sub" id="cancelSubText">هل أنت متأكد من إلغاء هذا الموعد؟ لا يمكن التراجع عن هذا الإجراء.</div>
+    <div class="confirm-actions">
+      <button class="confirm-cancel-btn" onclick="closeCancelModal()">تراجع</button>
+      <button class="confirm-delete-btn" onclick="confirmCancel()">إلغاء الموعد</button>
+    </div>
+  </div>
+</div>
+
+<script src="scriptdeparments/script.js"></script>
+   
+</body>
+</html>
